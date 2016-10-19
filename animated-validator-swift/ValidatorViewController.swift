@@ -159,8 +159,6 @@ class ValidatorViewController: UIViewController, UITextFieldDelegate {
 
 //self.submitButton.center.y = self.view.frame.minY
 
-//self.view.layoutIfNeeded()  - what's that?, forces initial constrainsts to be applied, second one
-
 
 //func shiftSubmitButton() {
     //self.view.layoutIfNeeded()
