@@ -160,6 +160,8 @@ class ValidatorViewController: UIViewController, UITextFieldDelegate {
 }
 
 
+
+
 //self.submitButton.center.y = self.view.frame.minY
 
 
