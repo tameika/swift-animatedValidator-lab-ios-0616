@@ -21,7 +21,7 @@ class ValidatorViewController: UIViewController, UITextFieldDelegate {
     var emailAddress = String()
     var password = String()
     var phoneNumber = [Int]()
-    var counter = 0
+    var count = 0
     
     let color8 = UIColor(red: 0.50,
                         green: 0.50,
@@ -64,84 +64,90 @@ class ValidatorViewController: UIViewController, UITextFieldDelegate {
     @IBAction func emailFieldAction(_ sender: AnyObject) {
         //if this does not happen then flash red
         
-        if ((emailTextField.text)?.characters.contains("@"))! && ((emailTextField.text)?.characters.contains("."))! {
+        if ((emailTextField.text)?.characters.contains("@"))! && ((emailTextField.text)?.characters.contains("."))! && emailTextField.text != "" {
             whiteOutBackground(for: emailTextField)
-            counter += 1
+            count += 1
             print("email entered")
         } else {
             
         wrongTextFieldEntry(for: emailTextField)
+           
             print("invalid email")
         }
         enableButton()
-        print(counter)
+        print(count)
     }
 
 
 
     @IBAction func emailConfirmationFieldAction(_ sender: AnyObject) {
-        if emailConfirmationTextField.text == emailTextField.text {
+        if emailConfirmationTextField.text == emailTextField.text && emailConfirmationTextField.text != "" {
             whiteOutBackground(for: emailConfirmationTextField)
-            counter += 1
+           count += 1
             print("email matches")
         } else {
             
             wrongTextFieldEntry(for: emailConfirmationTextField)
+            
             print("email doesn't match")
         }
         enableButton()
-        print(counter)
+        print(count)
     }
     
 
     @IBAction func phoneFieldAction(_ sender: AnyObject) {
-        if phoneTextField.text?.characters.count == 7 {
+        if (phoneTextField.text?.characters.count)! >= 7 && phoneTextField.text != "" {
             whiteOutBackground(for: phoneTextField)
-            counter += 1
+            count += 1
             print("phone number entered")
         } else {
             
             wrongTextFieldEntry(for: phoneTextField)
+            
             print("invalid phone number")
         }
         enableButton()
-        print(counter)
+        print(count)
     }
     
     
     @IBAction func passwordFieldAction(_ sender: AnyObject) {
-        if (passwordTextField.text)!.characters.count == 6 {             whiteOutBackground(for: passwordTextField)
-            counter += 1
+        if (passwordTextField.text)!.characters.count >= 6 && passwordTextField.text != "" {             whiteOutBackground(for: passwordTextField)
+            count += 1
             print("password entered")
         } else {
             
             wrongTextFieldEntry(for: passwordTextField)
+            
             print("invalid password")
         }
         enableButton()
-        print(counter)
+        print(count)
     }
     
     
     @IBAction func passwordConfirmationFieldAction(_ sender: AnyObject) {
-        if passwordTextField.text == passwordConfirmTextField.text {
+        if passwordTextField.text == passwordConfirmTextField.text && passwordTextField.text != "" {
             whiteOutBackground(for: passwordConfirmTextField)
-            counter += 1
+            count += 1
             print("password matches")
         } else {
             
             wrongTextFieldEntry(for: passwordConfirmTextField)
+            
             print("password doesn't match")
         }
         enableButton()
-        print(counter)
+        print(count)
     }
     
     
     
     
     func enableButton() {
-        if counter == 5 {
+        if count == 5 {
+            print(count)
             self.submitButton.isEnabled = true
            UIView.animate(withDuration: 0.5, delay: 0.2, options: .curveEaseInOut, animations: {
                 self.submitButton.center.y += self.view.bounds.width
